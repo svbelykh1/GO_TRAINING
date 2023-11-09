@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 var metersPerLiter float64
 
@@ -29,18 +31,57 @@ func main() {
 	//fmt.Printf("%s - %0.2f\n", "результат", float_)
 
 	// ---------------------------------------------------------------------------------------------------
-	//функции
+	//Вызываем объявленные функции в блоке main
 	//sayHello("Привет,", "мир", 5)
-	metersPerLiter = 7
-	fmt.Printf("%.2f литров требуется для покраски\n", paintNeed(3.7, 4.4))
+	/*metersPerLiter = 10
+	result, err := paintNeed(-11, 4)
+	if err != nil {
+		log.Fatal(err)
+	} else {
+		fmt.Printf("Требуется %.2f литров краски\n", result)
+	}
+	*/
+
+	// вызываем простую функцию double котопая просто умножает на 2 переданный аргумпент
+	number := 78
+	ukazatelNaNumber := &number
+	fmt.Println(&number)
+	fmt.Println(number)
+
+	fmt.Println(ukazatelNaNumber)
+	fmt.Println(*ukazatelNaNumber)
+
+	*ukazatelNaNumber = 100
+	fmt.Println(number)
+
+	myfunc(ukazatelNaNumber)
+	fmt.Println(number)
 }
+
+//Сами функции
+
+// Просто Функция
 func sayHello(var1 string, var2 string, var3 int) {
 	for x := 1; x <= var3; x++ {
 		println(var1, var2, x)
 	}
 }
 
-func paintNeed(height, width float64) float64 {
+// Функция со своей ошибкой
+func paintNeed(height float64, width float64) (float64, error) {
+	if width < 0 || height < 0 {
+		return 0, fmt.Errorf("Не корректная величина height %0.2f или width %0.2f", height, width)
+	}
 	area := height * width
-	return area / metersPerLiter
+	return area / metersPerLiter, nil
+}
+
+// Указатели
+// Изменение переменной в функции, которая объявленна за ее пределами
+// Функция принимает указатель который указывает на область памяти где храниться оригинал
+// & получение адреса переменной
+// * разыменовываем указатель
+func myfunc(numb *int) *int {
+	*numb = 1001
+	return numb
 }
