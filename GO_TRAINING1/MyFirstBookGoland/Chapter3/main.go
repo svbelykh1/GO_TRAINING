@@ -43,19 +43,17 @@ func main() {
 	*/
 
 	// вызываем простую функцию double котопая просто умножает на 2 переданный аргумпент
-	number := 78
-	ukazatelNaNumber := &number
-	fmt.Println(&number)
-	fmt.Println(number)
+	amount := 6
+	double(&amount)
+	// fmt.Println(amount)
 
-	fmt.Println(ukazatelNaNumber)
-	fmt.Println(*ukazatelNaNumber)
+	truth := true
+	lies := false
+	negate(&truth)
+	negate(&lies)
+	fmt.Println(truth)
+	fmt.Println(lies)
 
-	*ukazatelNaNumber = 100
-	fmt.Println(number)
-
-	myfunc(ukazatelNaNumber)
-	fmt.Println(number)
 }
 
 //Сами функции
@@ -81,7 +79,11 @@ func paintNeed(height float64, width float64) (float64, error) {
 // Функция принимает указатель который указывает на область памяти где храниться оригинал
 // & получение адреса переменной
 // * разыменовываем указатель
-func myfunc(numb *int) *int {
-	*numb = 1001
-	return numb
+
+func double(n *int) {
+	*n *= 2
+}
+
+func negate(myBoolean *bool) {
+	*myBoolean = !*myBoolean
 }
