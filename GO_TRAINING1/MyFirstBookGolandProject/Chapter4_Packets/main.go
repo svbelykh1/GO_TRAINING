@@ -1,7 +1,12 @@
 package main
 
-import greeting "github.com/svbelykh1/GO_TRAINING/GO_TRAINING1/MyFirstBookGolandProject/internal/greeting"
+import (
+	//gr "github.com/svbelykh1/GO_TRAINING/GO_TRAINING1/MyFirstBookGolandProject/internal/greeting"
+	"github.com/svbelykh1/GO_TRAINING/GO_TRAINING1/MyFirstBookGolandProject/internal/keyboard"
+)
 
 func main() {
-	greeting.Hi()
+	//gr.Hi()
+
+	keyboard.Hello()
 }
