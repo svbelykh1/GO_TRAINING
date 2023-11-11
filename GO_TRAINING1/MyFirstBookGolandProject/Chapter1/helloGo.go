@@ -2,9 +2,12 @@ package main
 
 import "fmt"
 
+
+import greeting "github.com/svbelykh1/GO_TRAINING/GO_TRAINING1/MyFirstBookGolandProject/internal/greeting"
 func main() {
 
 	fmt.Println("hearth")
+	greeting.Hi()
 	//Типы
 	/*
 		fmt.Println(math.Floor(2.75))
